@@ -12,9 +12,9 @@ function Calculator() {
     return (
         <div>
             <label>enter a number <input type="text" placeholder="enter first number "
-            value={number.number_one}   onChange={(e)=>{e.target.value}}/></label>
+            onChange={(e)=>{e.target.value}}/></label>
             <label>enter a number <input type="text" placeholder="enter second number "
-            value={number.number_two}      onChange={(e)=>{e.target.value}}/></label>
+            onChange={(e)=>{e.target.value}}/></label>
             <button onClick={sumOf}>+</button>
             <h1>{number.sum}</h1>
         </div>
