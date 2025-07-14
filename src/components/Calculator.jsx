@@ -1,18 +1,21 @@
 import React from 'react';
 
 function Calculator() {
-    const [value, setValue] = React.useState('');
-    const [value1, setValue1] = React.useState('');
-    const change =(e)=>{
-        setValue(e.target.value);
-        setValue1(e.target.value);
+    const [num, setNum] = React.useState({num1: 0, num2: 0,sum: 0,sub: 0,div: 0,mul: 0});
+
+    const onchange = (e) => {
+        setNum({...num,[e.target.name]: e.target.value});
     }
+
     return (
         <div>
-            <label>num1 :<input type="text" placeholder="enter a number" onChange={change} value={value} /></label>
-            <label>num2 :<input type="text" placeholder="enter a number" onChange={change} value={value1}/></label>
-            <h1>{value}</h1>
-            <h1>{value1}</h1>
+            <label>num1 :<input name="num1" type="text" placeholder="enter a number" onChange={onchange} /></label><br/>
+            <label>num2 :<input name="num2" type="text" placeholder="enter a number" onChange={onchange} /></label><br/>
+            <button onClick={()=>setNum({...num,sum:parseFloat(num.num1)+parseFloat(num.num2)})}>+</button>
+            <button onClick={()=>setNum({...num,sum:parseFloat(num.num1)-parseFloat(num.num2)})}>-</button>
+            <button onClick={()=>setNum({...num,sum:parseFloat(num.num1)*parseFloat(num.num2)})}>*</button>
+            <button onClick={()=>setNum({...num,sum:parseFloat(num.num1)/parseFloat(num.num2)})}>/</button>
+            <h1>{num.sum}</h1>
         </div>
     );
 }
